@@ -1,7 +1,7 @@
 c2rprox
 ========
 
-Reverseproxy which automatically define target pass.  
+Reverseproxy which automatically defines pass target.  
 Useful with docker installed on your desktop computer.
 
 
