@@ -1,0 +1,71 @@
+#!/bin/bash
+
+#########################################################
+# Add this script to /etc/init.d/ directory and run
+# update-rc.d thisSCriptName defaults
+#########################################################
+
+### BEGIN INIT INFO
+# Provides:           c2rprox
+# Required-Start:     $c2rprox
+# Required-Stop:      $c2rprox
+# Should-Start:       cgroupfs-mount cgroup-lite
+# Should-Stop:        cgroupfs-mount cgroup-lite
+# Default-Start:      2 3 4 5
+# Default-Stop:       0 1 6
+# Short-Description:  Reverseproxy which automatically defines pass target.
+# Description:
+#  docker-hosts
+### END INIT INFO
+
+
+me="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
+
+cd /usr/share/c2rprox/
+
+if [ "$(id -u)" != "0" ]; then
+	echo "Run it as root user"
+	exit 1
+fi
+
+if [ "$1" == "start" ]; then
+	pid=$(pgrep -l c2rprox |grep -v "c2rproxd" | grep -v "pgrep" | cut -d" " -f 1)
+	
+	if [ "$pid" != "" ]; then 
+		echo "Daemon already running, pid : $pid"; 
+		exit 1
+	fi
+
+	nohup ./c2rprox &> ./c2rprox.log &
+	sleep 2
+	pid=$(pgrep -l c2rprox |grep -v "c2rproxd" | grep -v "pgrep")
+	
+	if [ "$pid" != "" ]; then 
+		echo "Daemon running, pid : $pid"; 
+		else
+		echo "Problem : daemon not running"
+	fi
+	
+fi
+
+if [ "$1" == "stop" ]; then
+	pid=$(pgrep -f c2rprox)
+	
+	if [ "$pid" != "" ]; then 
+			kill -9 $pid
+			sleep 2
+		else
+			echo "Daemon already stopped"
+			exit 1
+	fi
+	
+	pid=$(pgrep -f c2rprox)
+	if [ "$pid" != "" ]; then 
+	kill -9 $pid
+			echo "Problem : daemon not stopped, pid : $pid"
+		else
+			echo "Daemon stopped"
+	fi
+	
+	
+fi

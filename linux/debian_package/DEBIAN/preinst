@@ -1,0 +1,2 @@
+#!/bin/bash
+cp /usr/share/c2rprox/targets /usr/share/c2rprox/targets.backup.$(date +%Y%m%d%H%M)

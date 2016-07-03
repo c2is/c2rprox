@@ -1,0 +1,8 @@
+Package: c2rpox
+Version: 1.0
+Section: base
+Priority: optional
+Architecture: all
+Depends: coreutils
+Maintainer: André Cianfarani <acianfa@gmail.com>
+Description: Reverseproxy which automatically defines pass target.

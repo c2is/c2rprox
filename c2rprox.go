@@ -52,8 +52,15 @@ func NewSingleHostReverseProxy(target *url.URL, filters []string) *httputil.Reve
 
 	targetQuery := target.RawQuery
 	director := func(req *http.Request) {
+
 		targetFound := ""
 		for _, element := range filters {
+
+			matchComment, _ := regexp.MatchString("^#", element)
+			if matchComment {
+				continue
+			}
+
 			confFields := strings.Split(string(element), " ")
 			filterHost := confFields[0]
 			if filterHost != "" {

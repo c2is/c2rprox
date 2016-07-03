@@ -1,0 +1,4 @@
+#!/bin/bash
+cp /usr/share/c2rprox/c2rproxd /etc/init.d/
+cd /etc/init.d/
+update-rc.d c2rproxd defaults
