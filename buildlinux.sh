@@ -16,6 +16,7 @@ cp c2rprox debian_package/usr/share/c2rprox/
 cp c2rproxd debian_package/usr/share/c2rprox/
 touch debian_package/usr/share/c2rprox/targets
 echo "#Don't forget to restart c2rprox (/etc/init.d/c2rprox stop & /etc/init.d/c2rprox start)\n" > debian_package/usr/share/c2rprox/targets
+echo "#domain-alpha.* 127.0.0.1:81\n" >> debian_package/usr/share/c2rprox/targets
 touch debian_package/usr/share/c2rprox/c2rprox.log
 
 cd $cwd/linux/debian_package/var/log/
