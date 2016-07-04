@@ -4,7 +4,7 @@ c2rprox
 Reverseproxy which automatically defines pass target.  
 Useful with docker installed on your desktop computer.
 
-## Linux Installation (debian's like systems')
+## Linux Installation (debian's like systems)
 Important : stop all services listening on port 80
 
 ```
