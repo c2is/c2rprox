@@ -1,0 +1,18 @@
+import	"github.com/pkg/profile"
+
+In NewSingleHostReverseProxy add
+defer profile.Start(profile.MemProfileRate(2048))
+
+Run
+./c2rprox
+
+Test to get some data
+
+Then catch th output, example:
+2016/07/05 15:12:44 profile: memory profiling enabled (rate 2048), /tmp/profile214667019/mem.pprof
+2016/07/05 15:12:44 profile: memory profiling disabled, /tmp/profile214667019/mem.pprof
+
+Kill c2rprox
+
+sudo go tool pprof ./c2rprox /tmp/profile214667019/mem.pprof
+Type top

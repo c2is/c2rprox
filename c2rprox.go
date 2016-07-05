@@ -8,12 +8,19 @@ import (
 	"log"
 	"net/http"
 	"net/http/httputil"
+	//_ "net/http/pprof"
 	"net/url"
 	"os"
 	"regexp"
+	//"runtime"
+	//"runtime/debug"
 	"strings"
 	"time"
+
+	//"github.com/pkg/profile"
 )
+
+//var prof = profile.Start(profile.MemProfile, profile.NoShutdownHook)
 
 // Own implementation of transport only to be able to catch response error
 type Transport struct {
@@ -78,9 +85,9 @@ func NewSingleHostReverseProxy(target *url.URL, filters []string) *httputil.Reve
 				}
 
 			}
+			confFields = nil
 
 		}
-
 		if targetFound != "" {
 			req.URL.Scheme = target.Scheme
 			req.URL.Host = targetFound
@@ -96,13 +103,16 @@ func NewSingleHostReverseProxy(target *url.URL, filters []string) *httputil.Reve
 
 	proxy := &httputil.ReverseProxy{Director: director, Transport: &Transport{}}
 
+	//debug.FreeOSMemory()
+	//runtime.GC()
+	//defer prof.Stop()
 	return proxy
 }
 
 func getconf() []string {
 	content, err := ioutil.ReadFile("targets")
 	if err != nil {
-		//Do something
+		panic(errors.New("No targets file "))
 	}
 	lines := strings.Split(string(content), "\n")
 
@@ -161,6 +171,7 @@ func main() {
 		Host:   "127.0.0.1:81",
 	}, lines)
 
-	log.Fatal(http.ListenAndServe(":80", proxy))
+	http.Handle("/", proxy)
+	log.Fatal(http.ListenAndServe(":80", nil))
 
 }
