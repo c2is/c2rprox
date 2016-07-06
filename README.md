@@ -43,12 +43,13 @@ Download installer image
 wget --no-check-certificate https://github.com/c2is/c2rprox/raw/master/macosx/C2rproxInstall.dmg -O C2rproxInstall.dmg
 ```
 
-Double click on the file C2rproxInstall.dmg it will appear in you finder.  
+Double click on the file C2rproxInstall.dmg it will appear in your finder.  
 Go inside and double click on the installer c2rprox.pkg.  
 Follow installer steps.
 
 Once installation finished, edit file /etc/targets and fill it with some rules according this scheme :  
-HostRegularExpression ip:port  
+HostRegularExpression ip:port
+
 Example:
 
 ```
@@ -57,8 +58,8 @@ domain-alpha.* 192.168.1.12:82
 domain-omega.* 192.168.99.100:81
 ```
 
-With these rules all incoming like http request http://domain-alpha.mydesktop.localdomain/XXX will be passed to 192.168.1.12:82.  
-And all incoming http request http://domain-omega.mydesktop.localdomain/XXX will be passed to 192.168.99.100:81. 
+With these rules all incoming http request like http://domain-alpha.mydesktop.localdomain/XXX will be passed to 192.168.1.12:82.  
+And all incoming http request like http://domain-omega.mydesktop.localdomain/XXX will be passed to 192.168.99.100:81. 
 
 
 Then start the daemon
