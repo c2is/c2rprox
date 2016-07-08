@@ -72,4 +72,26 @@ IMPORTANT : after any change in the targets file you have to restart the daemon 
 sudo c2rproxd stop && sudo c2rproxd start
 ```
 
+## Windows Installation
+Important : stop all services listening on port 80
+
+Download setup
+```
+wget --no-check-certificate https://github.com/c2is/c2rprox/raw/master/windows/c2rproxSetup.exe -O c2rproxSetup.exe
+```
+
+Run it.
+
+Once installation finished, edit file C:\c2rprox\targets and fill it with some rules according this scheme :  
+HostRegularExpression ip:port
+
+Example:
+
+```
+vi /etc/targets
+domain-alpha.* 192.168.1.12:82
+domain-omega.* 192.168.99.100:81
+```
+
+Then restart the service c2rprox using the Windows Services tool
 

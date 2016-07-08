@@ -1,0 +1,1 @@
+go build -o windows/c2rprox.exe c2rprox.go
