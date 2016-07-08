@@ -75,10 +75,7 @@ sudo c2rproxd stop && sudo c2rproxd start
 ## Windows Installation
 Important : stop all services listening on port 80
 
-Download setup
-```
-wget --no-check-certificate https://github.com/c2is/c2rprox/raw/master/windows/c2rproxSetup.exe -O c2rproxSetup.exe
-```
+Download setup: https://github.com/c2is/c2rprox/raw/master/windows/c2rproxSetup.exe
 
 Run it.
 
