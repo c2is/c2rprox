@@ -1,3 +1,5 @@
 C2rprox management
 
-To stop/start your c2rprox reverse proxy use the Windows Services tool
+To stop/start your c2rprox reverse proxy use the Windows Services tool or type in command :  
+net stop c2rprox
+net start c2rprox

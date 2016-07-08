@@ -90,5 +90,14 @@ domain-alpha.* 192.168.1.12:82
 domain-omega.* 192.168.99.100:81
 ```
 
-Then restart the service c2rprox using the Windows Services tool
+Then start the service c2rprox using the Windows Services tool or by typing in command prompt :  
+```
+net start c2rprox
+```
+
+IMPORTANT : after any change in the targets file you have to restart the daemon :
+```
+net stop c2rprox
+net start c2rprox
+```
 
