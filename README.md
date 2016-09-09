@@ -90,7 +90,7 @@ domain-alpha.* 192.168.1.12:82
 domain-omega.* 192.168.99.100:81
 ```
 
-Then start the service c2rprox using the Windows Services tool or by typing in command prompt :  
+Then start the service c2rprox using the Windows Services tool or by typing in command prompt launched as administrator :  
 ```
 net start c2rprox
 ```
