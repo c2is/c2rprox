@@ -24,7 +24,11 @@ function start {
 		exit 1
 	fi
 	
-	nohup ./c2rprox &> output.log &
+	# when started by launchd nohup fail
+	cde=$(nohup ./c2rprox &> output.log &)
+    if [ ! $cde ] ; then
+        ./c2rprox &> output.log
+    fi
 	
 	pid=$(pgrep -f c2rprox)
 	
