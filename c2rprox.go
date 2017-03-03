@@ -35,6 +35,7 @@ func (p *program) Stop(s service.Service) error {
 	// Stop should not block. Return with a few seconds.
 	return nil
 }
+
 //var prof = profile.Start(profile.MemProfile, profile.NoShutdownHook)
 
 // Own implementation of transport only to be able to catch response error

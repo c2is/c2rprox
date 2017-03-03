@@ -1,5 +1,5 @@
 #!/bin/bash
-abs_path="/usr/share/c2rprox"
+abs_path="/Users/Shared/c2rprox/"
 
 cd $abs_path
 
