@@ -66,12 +66,18 @@ Then start the daemon
 ```
 sudo c2rproxd start
 ```
-
+Or 
+```
+sudo /Users/Shared/c2rprox/c2rproxd
+```
 IMPORTANT : after any change in the targets file you have to restart the daemon :
 ```
 sudo c2rproxd stop && sudo c2rproxd start
 ```
-
+Or 
+```
+sudo /Users/Shared/c2rprox/c2rproxd stop && sudo /Users/Shared/c2rprox/c2rproxd start
+```
 ## Windows Installation
 Important : stop all services listening on port 80
 
